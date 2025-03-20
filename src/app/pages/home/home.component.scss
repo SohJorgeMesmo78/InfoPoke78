@@ -1,0 +1,43 @@
+.home-container {
+    text-align: center;
+    padding: 50px;
+    background-color: var(--fundo2);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    // transition: transform 0.3s ease-in-out;
+
+    h1 {
+        font-size: 2.5rem;
+        color: var(--texto);
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: var(--texto-claro);
+        margin-bottom: 30px;
+    }
+
+
+    .explore-btn {
+        background-color: var(--primaria);
+        color: white;
+        font-size: 1.1rem;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: var(--secundaria);
+        }
+    }
+
+    // &:hover {
+    //     transform: scale(1.05);
+    // }
+
+}

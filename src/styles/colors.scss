@@ -1,0 +1,33 @@
+:root {
+    --primaria: #DA9200;
+    --secundaria: #123eb6;
+    --fundo: #121212;
+    --fundo2: #1E1E1E;
+    --texto: #EAEAEA;
+    --texto2: #B0B0B0;
+  }
+  
+  .dark-theme {
+    --primaria: #DA9200;
+    --secundaria: #123eb6;
+    --fundo: #121212;
+    --fundo2: #1E1E1E;
+    --texto: #EAEAEA;
+    --texto2: #B0B0B0;
+  }
+  
+  .light-theme {
+    --primaria: #DA9200;
+    --secundaria: #082a85;
+    --fundo: #EDEDED;
+    --fundo2: #E1E1E1;
+    --texto: #151515;
+    --texto2: #4F4F4F;
+  }
+  
+  $primary-color: var(--primaria);
+  $accent-color: var(--secundaria);
+  $background-color: var(--fundo);
+  $surface-color: var(--fundo2);
+  $text-color: var(--texto);
+  $text-secondary-color: var(--texto2);

@@ -1,0 +1,14 @@
+<nav class="menu">
+  <ul>
+    <li>
+      <a routerLink="/home">Home</a>
+    </li>
+    <li>
+      <a routerLink="/pokedex">Pokedex</a>
+    </li>
+  </ul>
+  <button class="theme-toggle" (click)="toggleTheme()">
+    <span *ngIf="currentTheme === 'Light'">🌞 Light</span>
+    <span *ngIf="currentTheme === 'Dark'">🌙 Dark</span>
+  </button>
+</nav>
