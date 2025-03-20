@@ -1,4 +1,22 @@
 <div class="pokedex-container">
   <h1>Pokedex</h1>
-  <input type="text" placeholder="Pesquise um Pokémon..." />
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Pesquise um Pokémon..." (input)="filterPokemons()" />
+
+  <div class="pokemon-grid">
+    <div class="pokemon-card" *ngFor="let pokemon of paginatedPokemons">
+      <img [src]="pokemon.image" [alt]="pokemon.name" />
+      <p>{{ camelCase(pokemon.name) }}</p>
+    </div>
+  </div>
+
+  <app-paginator 
+    [length]="filteredPokemons.length"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    (pageChange)="onPageChange($event)">
+  </app-paginator>
+
+  <div *ngIf="loading" class="loading-spinner">
+    Carregando Pokémons...
+  </div>
 </div>

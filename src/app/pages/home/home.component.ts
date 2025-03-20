@@ -14,16 +14,4 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
-  chamaPoke(){
-    console.log("aiaiai")
-    this.pokeService.getPokemon('pikachu').subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      error: (err) => {
-        console.error('Erro ao buscar Pokémon', err);
-      }
-    });
-  }
 }

@@ -8,22 +8,35 @@ import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './shared/components/menu/menu.component';
 import { PokedexComponent } from './pages/pokedex/pokedex.component';
 import { FormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { PaginatorComponent } from './shared/components/paginator/paginator.component';
+;
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MenuComponent,
-    PokedexComponent
+    PokedexComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule, 
+    MatPaginatorModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,  
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

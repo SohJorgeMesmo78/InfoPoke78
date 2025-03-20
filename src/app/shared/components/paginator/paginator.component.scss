@@ -1,0 +1,32 @@
+
+
+mat-paginator {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+
+    .mat-paginator-page-size-label {
+      font-size: 16px;
+      color: var(--fundo2);
+    }
+
+    .mat-paginator-range-actions {
+      font-size: 16px;
+      color: var(--fundo2);
+    }
+
+    .mat-paginator-navigation-previous,
+    .mat-paginator-navigation-next {
+      background-color: var(--primaria);
+      border-radius: 50%;
+      padding: 8px;
+      color: var(--texto);
+    }
+
+    .mat-paginator-navigation-previous:hover,
+    .mat-paginator-navigation-next:hover {
+      background-color: var(--secundaria);
+    }
+  }
