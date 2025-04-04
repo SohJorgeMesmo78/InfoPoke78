@@ -1,11 +1,15 @@
 <div class="pokedex-container">
   <h1>Pokedex</h1>
+  
+  <div class="pokedex-title">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Pesquise um Pokémon..." (input)="getGridPokemon(true)" />
+    <img class="shiny" src="assets/images/shiny.png" alt="Shiny" (click)="shiny = !shiny"/>
+  </div>
 
-  <input type="text" [(ngModel)]="searchTerm" placeholder="Pesquise um Pokémon..." (input)="getGridPokemon(true)" />
-
-  <button class="filter-button" (click)="toggleFilter()">
-    {{ showFilters ? 'Fechar Filtros' : 'Abrir Mais Filtros' }}
-  </button>
+  <div class="row">
+    <button (click)="toggleFilter()"> {{ showFilters ? 'Fechar Filtros' : 'Abrir Mais Filtros' }} </button>
+    <button class="btn-secundario" (click)="limparFiltros()">Limpar Filtros</button>
+  </div>
 
   <div *ngIf="showFilters" class="filter-container">
     <div class="filter-title">Filtrar por Tipo:</div>
@@ -19,7 +23,7 @@
 
   <div class="pokemon-grid">
     <div class="pokemon-card" *ngFor="let pokemon of paginacao.data">
-      <img [src]="pokemon.imagens.padrao" [alt]="pokemon.nome" />
+      <img [src]="shiny ? pokemon.imagens.shiny : pokemon.imagens.padrao" [alt]="pokemon.nome"/>
       <p>{{ pokemon.nome | titlecase }}</p>
 
       <div class="pokemon-types">

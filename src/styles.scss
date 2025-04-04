@@ -11,10 +11,86 @@ body {
   background-color: var(--fundo);
   color: var(--texto);
   font-family: Roboto, sans-serif;
-  // padding-top: 80px;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
 
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  transition: color 0.3s;
+  transition: border 0.3s;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--primaria);
+  color: white;
 
+  &:hover {
+    background-color: var(--secundaria);
+  }
+
+  &.btn-secundario {
+    background-color: transparent;
+    color: var(--primaria);
+    border: 1px solid var(--primaria);
+
+    &:hover {
+      border: 1px solid var(--secundaria);
+      color: var(--secundaria);
+    }
+  }
+
+  &.btn-limpar {
+    background-color: transparent;
+    border: 2px solid var(--primaria);
+    color: var(--primaria);
+
+    &:hover {
+      background-color: var(--primaria);
+      color: white;
+    }
+  }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid var(--primaria);
+  border-radius: 30px;
+  outline: none;
+  width: 100%;
+  background-color: var(--fundo2);
+  color: var(--texto);
+  transition: all 0.3s ease;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+
+  &:focus {
+    border-color: var(--secundaria);
+    box-shadow: 0 0 10px var(--secundaria);
+  }
+}
+
+.row,
+.column {
+  display: flex;
+  padding: 30px;
+  gap: 20px;
+
+  .row {
+    flex-direction: row;
+  }
+
+  .column {
+    flex-direction: column;
+  }
+}

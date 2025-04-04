@@ -23,6 +23,7 @@ export class PokedexComponent implements OnInit {
   selectedTipos: string[] = [];
   showFilters: boolean = false;
   loading = false;
+  shiny = false;
   
   tiposDisponiveis: Tipo[] = [];
   
@@ -82,6 +83,13 @@ export class PokedexComponent implements OnInit {
       }
     );
   }
+
+  limparFiltros() {
+    this.selectedTipos = [];
+    this.searchTerm = '';
+    this.getGridPokemon(true);
+  }
+  
 
   onPageChange(event: any): void {
     this.paginacao.pagina = event.pageIndex + 1;
