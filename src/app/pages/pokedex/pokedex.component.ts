@@ -1,68 +1,56 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
+import { PokemonTable } from '../../interfaces/pokemon.model';
+import { Paginacao } from '../../interfaces/paginacao.model';
 
 @Component({
   selector: 'app-pokedex',
   templateUrl: './pokedex.component.html',
-  styleUrls: ['./pokedex.component.scss']
+  styleUrls: ['./pokedex.component.scss'],
 })
 export class PokedexComponent implements OnInit {
-  pokemons: any[] = [];
-  filteredPokemons: any[] = [];
-  paginatedPokemons: any[] = [];
-  loading = false;
+  paginacao: Paginacao<PokemonTable> = {
+    total: 0,
+    pagina: 1,
+    totalPaginas: 0,
+    limite: 10,
+    data: []
+  };
+  
   searchTerm: string = '';
+  loading = false;
 
-  // Configuração de paginação
-  pageSize: number = 20;
-  pageIndex: number = 0;
+  constructor(private pokemonService: PokemonService) {}
 
-  constructor(private pokemonService: PokemonService) { }
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadPokemons();
   }
 
-  loadPokemons() {
-    if (this.loading) return;
+  loadPokemons(resetPage: boolean = false): void {
     this.loading = true;
-
-    this.pokemonService.getPokemons(0, 10000).subscribe((data: any) => {
-      const allPokemons = data.results.map((pokemon: any) => ({
-        name: pokemon.name,
-        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.split('/')[6]}.png`
-      }));
-      console.log(data)
-      
-      this.pokemons = allPokemons;
-      this.filteredPokemons = this.pokemons;
-      this.applyPagination();
-      this.loading = false;
-    });
-  }
-
-  filterPokemons() {
-    const lowerCaseSearchTerm = this.searchTerm.toLowerCase();
-    this.filteredPokemons = this.pokemons.filter(pokemon => 
-      pokemon.name.toLowerCase().includes(lowerCaseSearchTerm)
+  
+    if (resetPage) {
+      this.paginacao.pagina = 1;
+    }
+  
+    const pagina = this.paginacao?.pagina ?? 1;
+    const limite = this.paginacao?.limite ?? 10;
+  
+    this.pokemonService.getPokemons(pagina, limite, this.searchTerm).subscribe(
+      (response: Paginacao<PokemonTable>) => {
+        this.paginacao = response;
+        this.loading = false;
+      },
+      (error) => {
+        console.error('Erro ao carregar os pokémons:', error);
+        this.loading = false;
+      }
     );
-    this.pageIndex = 0;
-    this.applyPagination();
   }
 
-  applyPagination() {
-    const startIndex = this.pageIndex * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
-    this.paginatedPokemons = this.filteredPokemons.slice(startIndex, endIndex);
-  }
-
-  onPageChange(event: { pageIndex: number, pageSize: number }) {
-    this.pageIndex = event.pageIndex;
-    this.pageSize = event.pageSize;
-    this.applyPagination();
-  }
-
-  camelCase(str: string): string {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  onPageChange(event: any): void {
+    this.paginacao.pagina = event.pageIndex + 1;
+    this.paginacao.limite = event.pageSize;
+    this.loadPokemons();
   }
 }
