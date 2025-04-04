@@ -76,7 +76,6 @@ export class PokedexComponent implements OnInit {
     this.tipoService.getTipos().subscribe(
       (tipos) => {
         this.tiposDisponiveis = tipos;
-        console.log(tipos)
       },
       (error) => {
         console.error('Erro ao carregar tipos:', error);
