@@ -20,31 +20,34 @@ export class PokemonService {
   public getPokemons(
     pagina: number,
     limite: number,
-    nome: string
+    nome: string,
+    tipos: string[] = []
   ): Observable<Paginacao<PokemonTable>> {
     let params = new HttpParams()
       .set('pagina', pagina)
       .set('limite', limite);
-
+  
     if (nome) {
       params = params.set('nome', nome.toLowerCase());
     }
-
+  
+    if (tipos.length) {
+      params = params.set('tipo', tipos.join(',')); // Formato: tipo=normal,flying
+    }
+  
     let headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
       type: 'application/json',
     });
-
+  
     if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.getItem('token');
       if (token) {
         headers = headers.set('Authorization', `Bearer ${token}`);
       }
     }
-
-    return this.http.get<Paginacao<PokemonTable>>(this.apiUrl, {
-      headers,
-      params,
-    });
+  
+    return this.http.get<Paginacao<PokemonTable>>(this.apiUrl, { headers, params });
   }
+  
 }

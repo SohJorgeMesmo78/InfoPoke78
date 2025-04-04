@@ -1,29 +1,38 @@
 <div class="pokedex-container">
   <h1>Pokedex</h1>
 
-  <input type="text" [(ngModel)]="searchTerm" placeholder="Pesquise um Pokémon..." (input)="loadPokemons(true)" />
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Pesquise um Pokémon..." (input)="getGridPokemon(true)" />
+
+  <button class="filter-button" (click)="toggleFilter()">
+    {{ showFilters ? 'Fechar Filtros' : 'Abrir Mais Filtros' }}
+  </button>
+
+  <div *ngIf="showFilters" class="filter-container">
+    <div class="filter-title">Filtrar por Tipo:</div>
+    <div class="filter-grid">
+      <div *ngFor="let tipo of tiposDisponiveis" (click)="toggleTipo(tipo.nome)"
+        [class.selected]="selectedTipos.includes(tipo.nome)">
+        <img [src]="'assets/images/tipos/' + tipo.nome + '_ico.png'" [alt]="tipo.nome" />
+      </div>
+    </div>
+  </div>
 
   <div class="pokemon-grid">
     <div class="pokemon-card" *ngFor="let pokemon of paginacao.data">
       <img [src]="pokemon.imagens.padrao" [alt]="pokemon.nome" />
       <p>{{ pokemon.nome | titlecase }}</p>
-      
+
       <div class="pokemon-types">
         <span *ngFor="let tipo of pokemon.tipos" class="type">
           <img [src]="'assets/images/tipos/' + tipo.nome + '_text.png'" [alt]="tipo.nome" />
-          <!-- {{ tipo.nome }} -->
         </span>
       </div>
     </div>
   </div>
 
-  <app-paginator 
-    [length]="paginacao.total || 0" 
-    [pageSize]="paginacao.limite || 10"
-    [pageIndex]="(paginacao.pagina || 1) - 1" 
-    (pageChange)="onPageChange($event)">
+  <app-paginator [length]="paginacao.total || 0" [pageSize]="paginacao.limite || 10"
+    [pageIndex]="(paginacao.pagina || 1) - 1" (pageChange)="onPageChange($event)">
   </app-paginator>
-
 
   <div *ngIf="loading" class="loading-spinner">
     Carregando Pokémons...
