@@ -163,7 +163,6 @@ app-paginator {
 .filter-grid div {
   cursor: pointer;
   padding: 5px;
-  border-radius: 10px;
   transition: transform 0.2s;
 }
 
@@ -176,6 +175,9 @@ app-paginator {
 }
 
 .filter-grid div.selected {
-  box-shadow: 0px 0px 10px var(--secundaria);
+  img{
+    border-radius: 100%;
+    box-shadow: 0px 0px 20px 10px var(--secundaria);
+  }
 }
 
