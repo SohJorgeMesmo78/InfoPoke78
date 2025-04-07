@@ -32,7 +32,7 @@ export class PokemonService {
     }
   
     if (tipos.length) {
-      params = params.set('tipo', tipos.join(',')); // Formato: tipo=normal,flying
+      params = params.set('tipo', tipos.join(','));
     }
   
     let headers = new HttpHeaders({
