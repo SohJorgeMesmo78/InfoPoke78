@@ -38,7 +38,6 @@
     [pageIndex]="(paginacao.pagina || 1) - 1" (pageChange)="onPageChange($event)">
   </app-paginator>
 
-  <div *ngIf="loading" class="loading-spinner">
-    Carregando Pokémons...
-  </div>
+  <app-loader *ngIf="loading"></app-loader>
+
 </div>
