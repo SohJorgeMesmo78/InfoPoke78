@@ -14,13 +14,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from './shared/shared.module';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { PokemonComponent } from './pages/pokemon/pokemon.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PokedexComponent
+    PokedexComponent,
+    PokemonComponent
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,7 @@
   </div>
 
   <div class="pokemon-grid">
-    <div class="pokemon-card" *ngFor="let pokemon of paginacao.data">
+    <div class="pokemon-card" *ngFor="let pokemon of paginacao.data" [routerLink]="['/pokemon', pokemon.id]">
       <img [src]="shiny ? pokemon.imagens.shiny : pokemon.imagens.padrao" [alt]="pokemon.nome"/>
       <p>{{ pokemon.nome | titlecase }}</p>
 

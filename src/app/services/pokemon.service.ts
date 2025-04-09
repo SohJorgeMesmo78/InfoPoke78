@@ -48,6 +48,23 @@ export class PokemonService {
     }
   
     return this.http.get<Paginacao<PokemonTable>>(this.apiUrl, { headers, params });
+  } 
+
+  public getPokemonById(id: number): Observable<PokemonTable> {
+    let headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      type: 'application/json',
+    });
+  
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        headers = headers.set('Authorization', `Bearer ${token}`);
+      }
+    }
+  
+    return this.http.get<PokemonTable>(`${this.apiUrl}/${id}`, { headers });
   }
+  
   
 }

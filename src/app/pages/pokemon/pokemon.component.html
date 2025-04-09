@@ -1,0 +1,39 @@
+<div class="pokemon-detalhe-container" *ngIf="!loading && pokemon">
+  <h1>{{ pokemon.nome | titlecase }}</h1>
+
+  <div class="pokemon-detalhe-card">
+    <img [src]="pokemon.imagens.oficial" [alt]="pokemon.nome" />
+
+    <div class="info">
+      <p><strong>Altura:</strong> {{ pokemon.altura }} m</p>
+      <p><strong>Peso:</strong> {{ pokemon.peso }} kg</p>
+      <p><strong>Experiência base:</strong> {{ pokemon.experiencia }}</p>
+
+      <div class="tipos">
+        <strong>Tipos:</strong>
+        <div class="tipo" *ngFor="let tipo of pokemon.tipos">
+          <img 
+            [src]="'assets/images/tipos/' + tipo.tipo.nome + '_text.png'" 
+            [alt]="tipo.tipo.nome" 
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jogos-container" *ngIf="pokemon.jogos?.length">
+    <h2>Jogos em que aparece</h2>
+    <div class="jogos-grid">
+      <div class="jogo-card" *ngFor="let jogo of pokemon.jogos">
+        <img 
+          [src]="getJogoImagem(jogo)" 
+          (error)="onImageError($event)" 
+          [alt]="jogo | titlecase"
+        />
+        <span>{{ jogo | titlecase }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-loader *ngIf="loading"></app-loader>
