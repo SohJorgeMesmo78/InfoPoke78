@@ -16,75 +16,117 @@
         text-align: center;
     }
 
-    .pokemon-detalhe-card {
+    .navegacao-wrapper {
         display: flex;
-        flex-direction: row;
-        background-color: var(--fundo2);
-        border: 2px solid var(--primaria);
-        border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        gap: 20px;
-        width: 100%;
-        max-width: 700px;
+        align-items: center;
+        gap: 10px;
 
-        img {
-            width: 150px;
-            height: 150px;
-            object-fit: contain;
-        }
-
-        .info {
+        .pokemon-detalhe-card {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            flex-direction: row;
+            background-color: var(--fundo2);
+            border: 2px solid var(--primaria);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            gap: 20px;
+            width: 100%;
+            max-width: 700px;
 
-            p {
-                margin: 5px 0;
-                font-size: 16px;
-                color: var(--texto2);
+            img {
+                width: 150px;
+                height: 150px;
+                object-fit: contain;
+            }
 
-                strong {
-                    color: var(--primaria);
+            .info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                p {
+                    margin: 5px 0;
+                    font-size: 16px;
+                    color: var(--texto2);
+
+                    strong {
+                        color: var(--primaria);
+                    }
+                }
+
+                .tipos {
+                    margin-top: 10px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+
+                    .tipo {
+                        background-color: var(--fundo);
+                        padding: 5px 10px;
+                        border-radius: 15px;
+                        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+                        display: flex;
+                        align-items: center;
+
+                        img {
+                            height: 20px;
+                            vertical-align: middle;
+                        }
+                    }
                 }
             }
 
-            .tipos {
-                margin-top: 10px;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
+            @media (max-width: 600px) {
+                flex-direction: column;
+                align-items: center;
 
-                .tipo {
-                    background-color: var(--fundo);
-                    padding: 5px 10px;
-                    border-radius: 15px;
-                    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-                    display: flex;
-                    align-items: center;
-
-                    img {
-                        height: 20px;
-                        vertical-align: middle;
-                    }
+                img {
+                    margin-bottom: 20px;
                 }
+
+                .info {
+                    align-items: center;
+                    text-align: center;
+                }
+            }
+        }
+
+        .seta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primaria);
+            color: white;
+            font-size: 24px;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+
+            &:hover {
+                background-color: var(--primaria);
+            }
+
+            &.anterior {
+                margin-right: -10px;
+            }
+
+            &.proxima {
+                margin-left: -10px;
             }
         }
 
         @media (max-width: 600px) {
             flex-direction: column;
-            align-items: center;
 
-            img {
-                margin-bottom: 20px;
-            }
-
-            .info {
-                align-items: center;
-                text-align: center;
+            .seta {
+                margin: 10px 0;
             }
         }
     }
+
 
     .jogos-container {
         margin-top: 40px;
@@ -100,7 +142,7 @@
 
         .jogos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             gap: 15px;
             justify-items: center;
 
