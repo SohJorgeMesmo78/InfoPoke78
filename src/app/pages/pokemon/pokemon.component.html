@@ -3,7 +3,7 @@
 
   <div class="navegacao-wrapper">
     <button class="seta anterior" (click)="carregarPokemon(pokemonId-1)" *ngIf="pokemonId > 1">
-      &#8592;
+      <
     </button>
     <div class="pokemon-detalhe-card">
       <img [src]="pokemon.imagens.oficial" [alt]="pokemon.nome" />
@@ -22,7 +22,7 @@
       </div>
     </div>
     <button class="seta proxima" (click)="carregarPokemon(pokemonId+1)">
-      &#8594;
+      >
     </button>
   </div>
 
