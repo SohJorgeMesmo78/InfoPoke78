@@ -19,4 +19,9 @@ export class MenuComponent implements OnInit {
     this.themeService.toggleTheme();
     this.currentTheme = this.themeService.getCurrentTheme();
   }
+
+  logClick() {
+    console.log('clicou no pokedex');
+  }
+  
 }
