@@ -6,7 +6,7 @@
       <
     </button>
     <div class="pokemon-detalhe-card">
-      <img [src]="pokemon.imagens.oficial" [alt]="pokemon.nome" />
+      <img [src]="pokemon.imagens.padrao" [alt]="pokemon.nome" />
 
       <div class="info">
         <p><strong>Altura:</strong> {{ pokemon.altura }} m</p>
@@ -16,7 +16,7 @@
         <div class="tipos">
           <strong>Tipos:</strong>
           <div class="tipo" *ngFor="let tipo of pokemon.tipos">
-            <img [src]="'assets/images/tipos/' + tipo.tipo.nome + '_text.png'" [alt]="'Tipo ' + tipo.tipo.nome"/>
+            <img [src]="'assets/images/tipos/' + tipo.nome + '_text.png'" [alt]="'Tipo ' + tipo.nome"/>
           </div>
         </div>
       </div>

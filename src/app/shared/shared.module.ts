@@ -5,6 +5,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   ],
   imports: [
     CommonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    RouterModule
   ],
   exports: [
     LoaderComponent,

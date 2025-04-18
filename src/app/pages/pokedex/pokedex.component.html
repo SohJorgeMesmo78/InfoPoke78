@@ -24,7 +24,7 @@
   <div class="pokemon-grid">
     <div class="pokemon-card" *ngFor="let pokemon of paginacao.data" [routerLink]="['/pokemon', pokemon.id]">
       <img [src]="shiny ? pokemon.imagens.shiny : pokemon.imagens.padrao" [alt]="pokemon.nome"/>
-      <p>{{ pokemon.nome | titlecase }}</p>
+      <p>{{pokemon.id}} - {{ pokemon.nome | titlecase }}</p>
 
       <div class="pokemon-types">
         <span *ngFor="let tipo of pokemon.tipos" class="type">
